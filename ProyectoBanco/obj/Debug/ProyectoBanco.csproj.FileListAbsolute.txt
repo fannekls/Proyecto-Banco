@@ -1,0 +1,5 @@
+C:\Users\Marcio\Documents\SharpDevelop Projects\ProyectoBanco\ProyectoBanco\obj\Debug\ProyectoBanco.csprojResolveAssemblyReference.cache
+C:\Users\Marcio\Documents\SharpDevelop Projects\ProyectoBanco\ProyectoBanco\bin\Debug\ProyectoBanco.exe
+C:\Users\Marcio\Documents\SharpDevelop Projects\ProyectoBanco\ProyectoBanco\bin\Debug\ProyectoBanco.pdb
+C:\Users\Marcio\Documents\SharpDevelop Projects\ProyectoBanco\ProyectoBanco\obj\Debug\ProyectoBanco.exe
+C:\Users\Marcio\Documents\SharpDevelop Projects\ProyectoBanco\ProyectoBanco\obj\Debug\ProyectoBanco.pdb
