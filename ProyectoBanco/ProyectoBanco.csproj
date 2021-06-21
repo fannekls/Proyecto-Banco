@@ -48,6 +48,7 @@
     <Compile Include="Banco.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="CtaBancaria.cs" />
+    <Compile Include="DniException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
