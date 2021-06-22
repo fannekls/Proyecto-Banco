@@ -70,7 +70,7 @@ namespace ProyectoBanco
 				while(dniInvalidoValido){
 					
 					
-					Console.WriteLine("Ingrese dni del cliente");
+					Console.Write("Ingrese dni del cliente: ");
 					
 					try{
 						
@@ -78,7 +78,7 @@ namespace ProyectoBanco
 						
 						if(dniTitular.ToString().ToCharArray().Length != 8){
 							
-							throw new DniException("se rompio todillo");
+							throw new DniException("ERROR");
 						}
 						
 						Console.WriteLine("PASE POR ACA");
@@ -86,13 +86,15 @@ namespace ProyectoBanco
 						
 					} catch(FormatException ex){
 						
-						Console.WriteLine("Error. Ingrese un valor numerico.");
+						Console.WriteLine("\nError. Ingrese un valor numerico. \n" +
+						                  "-------------------------------");
 						
 						dniTitular=1;
 						
 					} catch(DniException ex){
 						
-						Console.WriteLine("DNI invalido wachin");
+						Console.WriteLine("Debe ingresar 8 digitos. \n" +
+						                  "-------------------------------");
 						
 						dniTitular=1;
 						
@@ -109,28 +111,28 @@ namespace ProyectoBanco
 				if(!banco.esCliente(dniTitular)){
 					
 					
-					Console.WriteLine("Nuevo cliente, ingrese el nombre: ");
+					Console.Write("Nuevo cliente, ingrese el nombre: ");
 					string nombreNuevo= Console.ReadLine();
 					
-					Console.WriteLine("Ingrese apellido: ");
+					Console.Write("Ingrese apellido: ");
 					string apellidoNuevo = Console.ReadLine();
 					
-					Console.WriteLine("Ingrese dirección: ");
+					Console.Write("Ingrese dirección: ");
 					string direccioNueva= Console.ReadLine();
 					
-					Console.WriteLine("Ingrese telefono: ");
+					Console.Write("Ingrese telefono: ");
 					int telefonoNuevo=int.Parse(Console.ReadLine());
 					
-					Console.WriteLine("Ingrese E-mail: ");
+					Console.Write("Ingrese E-mail: ");
 					string emailNuevo=Console.ReadLine();
 					
 					banco.AgregarCliente(nombreNuevo,apellidoNuevo,dniTitular,direccioNueva,telefonoNuevo,emailNuevo);
 					
-					Console.WriteLine("Ingrese numero de cuenta: ");
+					Console.Write("Ingrese numero de cuenta: ");
 					int numeroCuentaNueva = int.Parse(Console.ReadLine());
 					
 					
-					Console.WriteLine("Ingrese monto inicial");
+					Console.Write("Ingrese monto inicial");
 					double montoInicial= double.Parse(Console.ReadLine());
 					
 					banco.AltaCuenta(numeroCuentaNueva,apellidoNuevo,dniTitular,montoInicial);

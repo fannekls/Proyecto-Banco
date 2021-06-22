@@ -142,7 +142,6 @@ namespace ProyectoBanco
 		
 			public void AltaCuenta (int numeroCuenta,string apellido, int dniTitular, double saldo){
 			
-			Console.WriteLine("pase por aca pelado");
 			
 			if(!ExisteCuenta(numeroCuenta)){
 				
@@ -152,7 +151,7 @@ namespace ProyectoBanco
 			
 			else {
 				
-				Console.WriteLine("Ya existe una cuenta con este DNI {0}",dniTitular);
+				Console.WriteLine("Ya existe una cuenta con numero");
 			}
 		}
 		

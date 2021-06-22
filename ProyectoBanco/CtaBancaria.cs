@@ -37,5 +37,11 @@ namespace ProyectoBanco
 			get{return saldo;}
 			set{saldo=value;}
 		}
+		
+		public override string ToString()
+		{
+			return string.Format("[CtaBancaria Apellido={0}, DniTitular={1}, NumeroCta={2}, Saldo={3}]", apellido, dniTitular, numeroCta, saldo);
+		}
+
 	}
 }
