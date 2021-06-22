@@ -52,9 +52,26 @@ namespace ProyectoBanco
 			get{return email;}
 			set{email=value;}
 		}
+		
+		public void AddNewAcount(CtaBancaria cta){
+			cuentasBancarias.Add(cta);
+		}
+		
 		public ArrayList ListaCuentas {
 			
 			get{return cuentasBancarias;}
 		}
+		
+		public override string ToString()
+		{	
+
+			string cuentasString=""; 			
+			foreach(CtaBancaria cta in cuentasBancarias)
+			{
+				cuentasString = cuentasString + cta.ToString();
+			}
+			return string.Format("[Cliente Nombre={0}, Apellido={1}, Email={2}, Direccion={3}, Dni={4}, Telefono={5}, CuentasBancarias={6}]", nombre, apellido, email, direccion, dni, telefono, cuentasString);
+		}
+
 	}
 }

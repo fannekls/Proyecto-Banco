@@ -48,9 +48,16 @@
     <Compile Include="Banco.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="CtaBancaria.cs" />
+    <Compile Include="CuentaInexistenteException.cs" />
     <Compile Include="DniException.cs" />
+    <Compile Include="OptionA.cs" />
+    <Compile Include="Option.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaldoInsuficienteException.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Options" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

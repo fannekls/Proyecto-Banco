@@ -21,7 +21,7 @@ namespace ProyectoBanco
 			this.clientes = new ArrayList();
 		}
 		
-		//Getters y Setters 
+		//Getters y Setters
 		
 		public string NombreBanco{
 			get{return nombreBanco;}
@@ -39,13 +39,13 @@ namespace ProyectoBanco
 					
 					existeCliente=true;
 					break;
-				}   
+				}
 				
 			}
 			
 			if(!existeCliente){
 				Cliente nuevoCliente = new Cliente(nombre,apellido,dni,direccion,telefono,email);
-				clientes.Add(nuevoCliente); 
+				clientes.Add(nuevoCliente);
 			}
 			
 			else{
@@ -56,11 +56,11 @@ namespace ProyectoBanco
 		
 		public void EliminarCliente ( int dniCliente ) {
 			
-			foreach(Cliente clienteX in clientes){            
+			foreach(Cliente clienteX in clientes){
 				
 				if (clienteX.Dni==dniCliente) {
-			
-					clientes.Remove(clienteX); 
+					
+					clientes.Remove(clienteX);
 				}
 				
 				else {
@@ -77,9 +77,9 @@ namespace ProyectoBanco
 		}
 		
 		public Cliente VerCliente(int dni){
-				
+			
 			foreach(Cliente clienteX in clientes){
-					
+				
 				if(clienteX.Dni==dni){
 					
 					return clienteX;
@@ -115,15 +115,15 @@ namespace ProyectoBanco
 		}
 		
 		public void AgregarcuentasCliente (int dni){
-		
+			
 			
 		}
-			
-			
+		
+		
 		//METODOS GESTION DE CUENTAS BANCARIAS
 		
 		private bool ExisteCuenta (int numeroCuenta) {
-		
+			
 			
 			foreach(CtaBancaria cuentaX in cuentasBancarias){
 				
@@ -140,14 +140,22 @@ namespace ProyectoBanco
 		}
 		
 		
-			public void AltaCuenta (int numeroCuenta,string apellido, int dniTitular, double saldo){
+		public void AltaCuenta (int numeroCuenta,string apellido, int dniTitular, double saldo){
 			
-			Console.WriteLine("pase por aca pelado");
+			//Console.WriteLine("pase por aca pelado");
 			
 			if(!ExisteCuenta(numeroCuenta)){
 				
-				CtaBancaria nuevaCuenta= new CtaBancaria(numeroCuenta,apellido,dniTitular,saldo);
+				CtaBancaria nuevaCuenta = new CtaBancaria(numeroCuenta,apellido,dniTitular,saldo);
+				
 				cuentasBancarias.Add(nuevaCuenta);
+				
+				foreach(Cliente cliente in clientes){
+					
+					if(dniTitular == cliente.Dni){
+						cliente.AddNewAcount(nuevaCuenta);
+					}
+				}
 			}
 			
 			else {
@@ -160,13 +168,15 @@ namespace ProyectoBanco
 			
 			foreach(CtaBancaria cuentaX in cuentasBancarias){
 				
-				if(cuentaX.NumeroCta==nroCuenta){
+				if(cuentaX.NumeroCta == nroCuenta){
 					
+					Console.WriteLine("Eliminando cuenta {0}",nroCuenta);
 					cuentasBancarias.Remove(cuentaX);
-				}
-				else {
+					break;
 					
-					Console.WriteLine("Cuenta inexistente");
+				} else {
+					
+					throw new CuentaInexistenteException();
 				}
 			}
 		}
@@ -184,12 +194,24 @@ namespace ProyectoBanco
 		
 		public void Extraer (int numeroCuenta,double monto){
 			
+			CtaBancaria cuentaExtraer=null;
+			
 			foreach(CtaBancaria cuentaX in cuentasBancarias){
 				
-				if(cuentaX.NumeroCta==numeroCuenta){
-					
-					cuentaX.Saldo=cuentaX.Saldo-monto;
+				if(cuentaX.NumeroCta == numeroCuenta){
+					cuentaExtraer=cuentaX;
+						
 				}
+			}
+			
+			if(cuentaExtraer == null){
+				throw new Exception("cuenta no existe");
+			}
+			
+			if(cuentaExtraer.Saldo > monto){
+				cuentaExtraer.Saldo=cuentaExtraer.Saldo-monto;
+			}else{
+				throw new SaldoInsuficienteException(cuentaExtraer.Saldo.ToString());
 			}
 			
 		}
@@ -209,15 +231,15 @@ namespace ProyectoBanco
 					
 					return cuentaX;
 				}
-					
+				
 			}
 			
 			Console.WriteLine("No existe una cuenta con este numero");
-					
+			
 			return null;
 		}
 		
-		public ArrayList TodasCuentas{
+		public ArrayList TodasCuentas {
 			
 			get {return cuentasBancarias;}
 		}
