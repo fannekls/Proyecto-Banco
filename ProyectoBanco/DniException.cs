@@ -6,11 +6,9 @@ namespace ProyectoBanco
 
 	public class DniException : Exception 
 	{
-		public string mensaje;
 		
-		public DniException(string mensaje){
+		public DniException(){
 			
-			this.mensaje=mensaje;
 		}
 		
 		

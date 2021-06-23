@@ -13,12 +13,13 @@ namespace ProyectoBanco
 			int dniTitular=0;
 			
 			bool otraCuenta=true;
-			bool dniInvalidoValido=true;
+			
+			bool dniInvalido=true;
 
 			
 			while(otraCuenta){
 				
-				while(dniInvalidoValido){
+				while(dniInvalido){
 					
 					
 					Console.Write("Ingrese dni del cliente: ");
@@ -29,31 +30,25 @@ namespace ProyectoBanco
 						
 						if(dniTitular.ToString().ToCharArray().Length != 8){
 							
-							throw new DniException("ERROR");
+							throw new DniException();
 						}
 						
-						dniInvalidoValido=false;
+						dniInvalido=false;
+						
 						
 					} catch(FormatException){
 						
 						Console.WriteLine("\nError. Ingrese un valor numerico. \n" +
 						                  "-------------------------------");
 						
-						dniTitular=1;
-						
+
 					} catch(DniException){
 						
 						Console.WriteLine("Debe ingresar 8 digitos. \n" +
 						                  "-------------------------------");
-						
-						dniTitular=1;
-						
 					} catch(Exception){
 						
 						Console.WriteLine("INTERNAL ERROR");
-						
-						dniTitular=1;
-						
 					}
 				}
 				
@@ -82,7 +77,7 @@ namespace ProyectoBanco
 					int numeroCuentaNueva = int.Parse(Console.ReadLine());
 					
 					
-					Console.Write("Ingrese monto inicial");
+					Console.Write("Ingrese monto inicial: ");
 					double montoInicial= double.Parse(Console.ReadLine());
 					
 					banco.AltaCuenta(numeroCuentaNueva,apellidoNuevo,dniTitular,montoInicial);
@@ -99,7 +94,7 @@ namespace ProyectoBanco
 					Console.WriteLine("Ingrese apellido: ");
 					string apellidoNuevo = Console.ReadLine();
 					
-					Console.WriteLine("Ingrese monto inicial");
+					Console.Write("Ingrese monto inicial: ");
 					double montoInicial= double.Parse(Console.ReadLine());
 					
 					banco.AltaCuenta(numeroCuenta,apellidoNuevo,dniTitular,montoInicial);
@@ -119,10 +114,46 @@ namespace ProyectoBanco
 					
 				}
 				
+				dniInvalido= true;
+				
+				
 			}
 		}
 		
+		public static void OpcionC(Banco banco){
+			
+			foreach(Cliente clienteX in banco.TodoslosClientes){
+				
+				if(clienteX.ListaCuentas.Count>1){
+					
+					Console.WriteLine(clienteX.ToString());
+					
+				}
+				
+			}
+			
+		}
 		
+		public static void OpcionF (Banco banco){
+			
+			foreach(CtaBancaria cuentaX in banco.TodasCuentas){
+						
+						Console.WriteLine(cuentaX.ToString());
+					}
+			
+			
+			
+		}
+		
+		public static void OpcionG (Banco banco){
+			
+			foreach(Cliente clienteX in banco.TodoslosClientes){
+				
+				Console.WriteLine(clienteX.ToString());
+				
+			}
+			
+		}
 		
 		
 	}

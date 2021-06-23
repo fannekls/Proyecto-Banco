@@ -10,9 +10,9 @@ namespace ProyectoBanco
 			
 			Banco galicia = new Banco ("Banco Galicia");
 			
-			bool flag=true;
+			bool menuOpciones=true;
 			
-			while(flag){
+			while(menuOpciones){
 				
 				Console.WriteLine("Gestión {0}",galicia.NombreBanco);
 				Console.WriteLine("________________________________\n");
@@ -32,17 +32,32 @@ namespace ProyectoBanco
 					Opciones.OpcionA(galicia);
 					
 				} else if(menu=="b" || menu=="B"){
+					
+					
 
 				} else if(menu=="f" || menu=="F"){
 					
-					ArrayList cuentasGalicia = galicia.TodasCuentas;
+					Console.WriteLine("___________Cuentas Bancarias____________");
+					
+					
+					Opciones.OpcionF(galicia);
+					
+					
+					Console.WriteLine("________________________________________");
 					
 				} else if(menu=="g" || menu=="G"){
 					
-					galicia.TodoslosClientes;
+					Console.WriteLine("___________Clientes____________");
+					
+					
+					Opciones.OpcionG(galicia);
+					
+					
+					Console.WriteLine("_________________________________");
+					
 				} else if(menu=="h" || menu=="H"){
 					
-					flag=false;
+					menuOpciones=false;
 				}
 			}
 			

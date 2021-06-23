@@ -40,7 +40,7 @@ namespace ProyectoBanco
 		
 		public override string ToString()
 		{
-			return string.Format("[CtaBancaria Apellido={0}, DniTitular={1}, NumeroCta={2}, Saldo={3}]", apellido, dniTitular, numeroCta, saldo);
+			return string.Format("[Apellido={0}, DniTitular={1}, NumeroCta={2}, Saldo={3}]", apellido, dniTitular, numeroCta, saldo);
 		}
 
 	}
