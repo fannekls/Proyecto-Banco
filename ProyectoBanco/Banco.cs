@@ -219,6 +219,9 @@ namespace ProyectoBanco
 		public ArrayList TodasCuentas{
 			
 			get {return cuentasBancarias;}
+			
 		}
+	
+
 	}
 }

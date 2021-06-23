@@ -57,9 +57,16 @@ namespace ProyectoBanco
 			get{return cuentasBancarias;}
 		}
 		
-		public override string ToString()
-		{
-			return string.Format("[Cliente Nombre={0}, Apellido={1}, Email={2}, Direccion={3}, Dni={4}, Telefono={5}, CuentasBancarias={6}]", nombre, apellido, email, direccion, dni, telefono, cuentasBancarias);
+		public override string ToString(){
+			
+			string listaCuentas = "";
+			
+			foreach(CtaBancaria cuentaX in cuentasBancarias){
+				
+				listaCuentas=listaCuentas + cuentaX.ToString();
+			}
+
+			return string.Format("[Cliente Nombre={0}, Apellido={1}, Email={2}, Direccion={3}, Dni={4}, Telefono={5}, CuentasBancarias={6}]", nombre, apellido, email, direccion, dni, telefono, listaCuentas);
 		}
 
 	}
