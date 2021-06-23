@@ -9,7 +9,7 @@ namespace ProyectoBanco
 		{
 			
 			Banco galicia = new Banco ("Banco Galicia");
-			DatosDefault(galicia);
+			// DatosDefault(galicia);
 			
 			
 			
@@ -86,7 +86,7 @@ namespace ProyectoBanco
 
 				} else if(menu.ToLower()=="e"){
 					
-					bool flagAPB=true;
+					bool flagAPB = true;
 					
 					while(flagAPB){
 						
@@ -139,8 +139,6 @@ namespace ProyectoBanco
 			}
 			
 			Console.ReadKey(true);
-			
-			
 			
 		}
 		

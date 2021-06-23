@@ -22,7 +22,7 @@ namespace ProyectoBanco
 			while(otraCuenta){
 				
 				
-				IngresarDNIYValidar(dniTitular);
+				dniTitular=IngresarDNIYValidar(dniTitular);
 				
 				if(!banco.esCliente(dniTitular)){
 					
@@ -100,7 +100,8 @@ namespace ProyectoBanco
 		}
 
 
-		void IngresarDNIYValidar(int dniTitular){
+		int IngresarDNIYValidar(int dniTitular){
+			
 			bool dniInvalidoValido = true;
 			
 			while (dniInvalidoValido) {
@@ -137,6 +138,8 @@ namespace ProyectoBanco
 
 				}
 			}
+			
+			return dniTitular;
 		}
 	}
 }
