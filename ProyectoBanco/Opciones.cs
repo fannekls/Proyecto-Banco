@@ -134,6 +134,12 @@ namespace ProyectoBanco
 			
 		}
 		
+		public static void OpcionD (Banco banco){
+			
+			
+			
+		}
+		
 		public static void OpcionF (Banco banco){
 			
 			foreach(CtaBancaria cuentaX in banco.TodasCuentas){

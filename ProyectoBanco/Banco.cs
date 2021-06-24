@@ -186,13 +186,35 @@ namespace ProyectoBanco
 		
 		public void Extraer (int numeroCuenta,double monto){
 			
+			CtaBancaria cuentadeExtraccion = null;
+			
 			foreach(CtaBancaria cuentaX in cuentasBancarias){
 				
 				if(cuentaX.NumeroCta==numeroCuenta){
 					
-					cuentaX.Saldo=cuentaX.Saldo-monto;
+					cuentadeExtraccion=cuentaX;
 				}
 			}
+			
+			
+			if (cuentadeExtraccion == null){
+				
+				
+				throw new CuentaExistenteExcepcion();
+			}
+			
+			
+			if(cuentadeExtraccion.Saldo<monto){
+				
+				throw new SaldoInsuficienteException();
+				
+			}
+			
+			else{
+				
+				cuentadeExtraccion.Saldo - monto;
+			}
+			
 			
 		}
 		

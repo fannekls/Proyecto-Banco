@@ -36,7 +36,7 @@ namespace ProyectoBanco
 
 				}else if(menu=="c" || menu=="C"){
 					
-					Opciones.OpcionC(galicia)
+					Opciones.OpcionC(galicia);
 					
 					
 				}else if(menu=="d" || menu=="D"){
