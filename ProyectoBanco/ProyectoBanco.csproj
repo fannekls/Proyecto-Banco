@@ -50,6 +50,7 @@
     <Compile Include="CtaBancaria.cs" />
     <Compile Include="CuentaExistenteExcepcion.cs" />
     <Compile Include="DniException.cs" />
+    <Compile Include="LimiteCajaException.cs" />
     <Compile Include="Opciones.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

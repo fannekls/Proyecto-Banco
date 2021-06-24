@@ -26,7 +26,9 @@ namespace ProyectoBanco
 				                  "\ng) Listado de clientes"+
 				                  "\nh) Finalizar programa"+
 				                  "\n");
+				
 				string menu = Console.ReadLine();
+				
 				if(menu=="a" || menu=="A"){
 					
 					Opciones.OpcionA(galicia);
@@ -41,9 +43,11 @@ namespace ProyectoBanco
 					
 				}else if(menu=="d" || menu=="D"){
 					
-				
+					Opciones.OpcionD(galicia);
+					
 				}else if(menu=="e" || menu=="E"){
 					
+					Opciones.OpcionE(galicia);
 					
 				}else if(menu=="f" || menu=="F"){
 					

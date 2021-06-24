@@ -21,7 +21,7 @@ namespace ProyectoBanco
 			this.clientes = new ArrayList();
 		}
 		
-		//Getters y Setters 
+		//Getters y Setters
 		
 		public string NombreBanco{
 			get{return nombreBanco;}
@@ -39,13 +39,13 @@ namespace ProyectoBanco
 					
 					existeCliente=true;
 					break;
-				}   
+				}
 				
 			}
 			
 			if(!existeCliente){
 				Cliente nuevoCliente = new Cliente(nombre,apellido,dni,direccion,telefono,email);
-				clientes.Add(nuevoCliente); 
+				clientes.Add(nuevoCliente);
 			}
 			
 			else{
@@ -56,11 +56,11 @@ namespace ProyectoBanco
 		
 		public void EliminarCliente ( int dniCliente ) {
 			
-			foreach(Cliente clienteX in clientes){            
+			foreach(Cliente clienteX in clientes){
 				
 				if (clienteX.Dni==dniCliente) {
-			
-					clientes.Remove(clienteX); 
+					
+					clientes.Remove(clienteX);
 				}
 				
 				else {
@@ -77,9 +77,9 @@ namespace ProyectoBanco
 		}
 		
 		public Cliente VerCliente(int dni){
-				
+			
 			foreach(Cliente clienteX in clientes){
-					
+				
 				if(clienteX.Dni==dni){
 					
 					return clienteX;
@@ -115,15 +115,15 @@ namespace ProyectoBanco
 		}
 		
 		public void AgregarcuentasCliente (int dni){
-		
+			
 			
 		}
-			
-			
+		
+		
 		//METODOS GESTION DE CUENTAS BANCARIAS
 		
 		private bool ExisteCuenta (int numeroCuenta) {
-		
+			
 			
 			foreach(CtaBancaria cuentaX in cuentasBancarias){
 				
@@ -140,7 +140,7 @@ namespace ProyectoBanco
 		}
 		
 		
-			public void AltaCuenta (int numeroCuenta,string apellido, int dniTitular, double saldo){
+		public void AltaCuenta (int numeroCuenta,string apellido, int dniTitular, double saldo){
 			
 			
 			if(!ExisteCuenta(numeroCuenta)){
@@ -175,13 +175,33 @@ namespace ProyectoBanco
 		
 		public void Depositar (int numeroCuenta,double monto){
 			
+			CtaBancaria cuentaDeposito = null;
+			
 			foreach(CtaBancaria cuentaX in cuentasBancarias){
 				
 				if(cuentaX.NumeroCta==numeroCuenta){
 					
-					cuentaX.Saldo=cuentaX.Saldo+monto;
+					cuentaDeposito=cuentaX;
 				}
 			}
+			
+			if(cuentaDeposito == null){
+				
+				throw new CuentaExistenteExcepcion();
+				
+			}
+			
+			if((cuentaDeposito.Saldo+monto) > (Math.Pow(1.7976931348623158, 308))){
+				
+				throw new LimiteCajaException();
+				
+			}
+			
+			else {
+				
+				cuentaDeposito.Saldo=cuentaDeposito.Saldo+monto;
+			}
+			
 		}
 		
 		public void Extraer (int numeroCuenta,double monto){
@@ -212,7 +232,7 @@ namespace ProyectoBanco
 			
 			else{
 				
-				cuentadeExtraccion.Saldo - monto;
+				cuentadeExtraccion.Saldo = cuentadeExtraccion.Saldo - monto;
 			}
 			
 			
@@ -233,11 +253,11 @@ namespace ProyectoBanco
 					
 					return cuentaX;
 				}
-					
+				
 			}
 			
 			Console.WriteLine("No existe una cuenta con este numero");
-					
+			
 			return null;
 		}
 		
@@ -246,7 +266,7 @@ namespace ProyectoBanco
 			get {return cuentasBancarias;}
 			
 		}
-	
+		
 
 	}
 }

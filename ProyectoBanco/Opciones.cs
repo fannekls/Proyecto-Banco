@@ -130,22 +130,100 @@ namespace ProyectoBanco
 					
 				}
 				
+				else {
+					
+					Console.WriteLine("No hay clientes con mas de una cuenta");
+					
+				}
+				
 			}
 			
 		}
 		
 		public static void OpcionD (Banco banco){
 			
+			bool datos = true;
 			
+			while(datos){
+				
+				try{
+					Console.Write("Ingrese el numero de cuenta: ");
+					int cta= int.Parse(Console.ReadLine());
+					
+					Console.Write("Ingrese el monto que desea extraer: ");
+					double montoExt= double.Parse(Console.ReadLine());
+					
+					banco.Extraer(cta,montoExt);
+					
+					datos=false;
+					
+				} catch (FormatException) {
+					
+					Console.WriteLine("Solo se permiten datos numericos");
+					
+				} catch (CuentaExistenteExcepcion) {
+					
+					Console.WriteLine("Esta cuenta no se encuentra registrada");
+				} catch (SaldoInsuficienteException) {
+					
+					Console.WriteLine("Saldo Insuficiente");
+				} catch (Exception) {
+					
+					Console.WriteLine("INTERNAL ERROR. Ocurrio un error inesperado");
+				}
+				
+			}
+			
+		}
+		
+		
+		public static void OpcionE(Banco banco){
+			
+			bool datos=true;
+			
+			while(datos){
+				
+				try{
+					
+					Console.Write("Ingrese el numero de cuenta: ");
+					int cta= int.Parse(Console.ReadLine());
+					
+					Console.Write("Ingrese el monto a depositar: ");
+					double deposito = double.Parse(Console.ReadLine());
+					
+					banco.Depositar(cta,deposito);
+					
+					datos=false;
+					
+					
+				}catch(FormatException){
+					
+					Console.WriteLine("Solo se permiten valores numericos");
+					
+				}catch(CuentaExistenteExcepcion){
+					
+					Console.WriteLine("Cuenta inexistente");
+					
+				}catch(LimiteCajaException){
+					
+					Console.WriteLine("Este monto supera el limite de efectivo de la caja de ahorros");
+					
+				}catch(Exception){
+					
+					Console.WriteLine("INTERNAL ERROR. Ocurrio un error inesperado.");
+					
+				}
+				
+			}
 			
 		}
 		
 		public static void OpcionF (Banco banco){
 			
 			foreach(CtaBancaria cuentaX in banco.TodasCuentas){
-						
-						Console.WriteLine(cuentaX.ToString());
-					}
+				
+				Console.WriteLine(cuentaX.ToString());
+			}
 			
 			
 			
