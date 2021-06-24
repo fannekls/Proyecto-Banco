@@ -160,17 +160,45 @@ namespace ProyectoBanco
 		
 		public void BajaCuenta(int nroCuenta){
 			
+//			foreach(CtaBancaria cuentaX in cuentasBancarias){
+//				
+//				if(cuentaX.NumeroCta==nroCuenta){
+//					
+//					cuentasBancarias.Remove(cuentaX);
+//				}
+//				else {
+//					
+//					Console.WriteLine("Cuenta inexistente");
+//				}
+//			}
+			CtaBancaria cuentaBorrar = null;
+			
+			
 			foreach(CtaBancaria cuentaX in cuentasBancarias){
 				
 				if(cuentaX.NumeroCta==nroCuenta){
 					
-					cuentasBancarias.Remove(cuentaX);
-				}
-				else {
+					cuentaBorrar=cuentaX;
 					
-					Console.WriteLine("Cuenta inexistente");
+					}
+					
 				}
+			
+			if(cuentaBorrar==null){
+				
+				throw new CuentaExistenteExcepcion();
+				
 			}
+			
+			
+			else{
+				
+				cuentasBancarias.Remove(cuentaBorrar);
+				
+			}
+			
+			
+			
 		}
 		
 		public void Depositar (int numeroCuenta,double monto){

@@ -10,6 +10,10 @@ namespace ProyectoBanco
 			
 			Banco galicia = new Banco ("Banco Galicia");
 			
+			DatosDefault(galicia);
+			
+			Console.WriteLine("_____________________________________________________________________________________________________________\n");
+			
 			bool menuOpciones=true;
 			
 			while(menuOpciones){
@@ -34,6 +38,8 @@ namespace ProyectoBanco
 					Opciones.OpcionA(galicia);
 					
 				} else if(menu=="b" || menu=="B"){
+					
+					Opciones.OpcionB(galicia);
 					
 
 				}else if(menu=="c" || menu=="C"){
@@ -76,6 +82,26 @@ namespace ProyectoBanco
 			}
 			
 			Console.ReadKey(true);
+		}
+		
+		
+		private static void DatosDefault(Banco banco){
+			
+			banco.AgregarCliente("Horacio", "Alvarez", 78952221, "calle 735 Bernal", 12345678, "HoracioAlvi@outlook.com");
+			banco.AltaCuenta(1112,"Alvarez",78952221,123165165);
+			
+			banco.AgregarCliente("Matias", "Guarneri", 52164821, "calle duarte n1333", 52164821, "Mguarneri@gmail.com");
+			banco.AltaCuenta(11254,"Guarneri",52164821,123165165);
+			
+			banco.AgregarCliente("Jorge", "Caceres", 30154691, "calle 29 bis n1344", 30154691, "jorgc.100@hotmail.com");
+			banco.AltaCuenta(323,"Caceres",30154691,123165165);
+			
+			banco.AgregarCliente("Ezequiel", "Agusti", 21875131, "calle alsina 1243", 21875131, "eze.98.ll@gmail.com");
+			banco.AltaCuenta(414,"Agusti",21875131,123165165);
+			
+			banco.AgregarCliente("Kevin", "Barco", 33651281, "calle 882 n2254", 21875131, "kb.barz@hotmail.com");
+			banco.AltaCuenta(7541,"Barco",33651281,123165165);
+			banco.AltaCuenta(21312,"Barco",33651281,123165165);
 		}
 		
 	}

@@ -10,7 +10,7 @@ namespace ProyectoBanco
 		
 		private string nombre, apellido, email, direccion;
 		private int dni, telefono;
-		private ArrayList cuentasBancarias;
+		private ArrayList cuentasCliente;
 		
 		
 		//Constructores
@@ -24,7 +24,7 @@ namespace ProyectoBanco
 			this.direccion=direccion;
 			this.telefono=telefono;
 			this.email=email;
-			this.cuentasBancarias= new ArrayList ();
+			this.cuentasCliente= new ArrayList ();
 		}
 		
 		//Getters y setters
@@ -52,16 +52,16 @@ namespace ProyectoBanco
 			get{return email;}
 			set{email=value;}
 		}
-		public ArrayList ListaCuentas {
+		public ArrayList CuentasCliente {
 			
-			get{return cuentasBancarias;}
+			get{return cuentasCliente;}
 		}
 		
 		public override string ToString(){
 			
 			string listaCuentas = "";
 			
-			foreach(CtaBancaria cuentaX in cuentasBancarias){
+			foreach(CtaBancaria cuentaX in cuentasCliente){
 				
 				listaCuentas=listaCuentas + cuentaX.ToString();
 			}

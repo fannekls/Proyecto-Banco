@@ -120,23 +120,92 @@ namespace ProyectoBanco
 			}
 		}
 		
+		public static void OpcionB(Banco banco){
+			
+			Cliente clienteBorrar= null;
+			
+			CtaBancaria cuentaCliente= null;
+			
+			bool datos=true;
+			
+			while(datos){
+				try{
+					
+					Console.Write("Ingrese el numero de la cuenta a borrar");
+					int cuentaBorrar= int.Parse(Console.ReadLine());
+					
+					banco.BajaCuenta(cuentaBorrar);
+					
+					foreach(CtaBancaria cuentaX in banco.TodasCuentas){
+						
+						if(cuentaX.NumeroCta==cuentaBorrar){
+							
+							cuentaCliente=cuentaX;
+							
+							if(cuentaCliente.DniTitular==clienteBorrar.Dni){
+								
+								foreach(Cliente clienteX in banco.TodoslosClientes){
+									
+									if(clienteX.Dni==clienteBorrar.Dni){
+										
+										clienteBorrar=clienteX;
+										
+									}
+								}
+								
+								
+								
+							}
+							
+						}
+						
+					}
+					
+					if(clienteBorrar.CuentasCliente.Count==0){
+						
+						banco.TodoslosClientes.Remove(clienteBorrar);
+						
+						
+					}
+					
+					else{
+							
+							throw new CuentaExistenteExcepcion();
+						}
+					
+					
+					datos=true;
+					
+				} catch(FormatException){
+					
+					Console.WriteLine("Ingrese valores numericos");
+					
+				} catch(CuentaExistenteExcepcion){
+					
+					Console.WriteLine("Cuenta inexistente");
+				}
+				
+			}
+			
+		}
+		
 		public static void OpcionC(Banco banco){
 			
 			foreach(Cliente clienteX in banco.TodoslosClientes){
 				
-				if(clienteX.ListaCuentas.Count>1){
+				if(clienteX.CuentasCliente.Count>1){
 					
 					Console.WriteLine(clienteX.ToString());
 					
 				}
 				
-				else {
-					
-					Console.WriteLine("No hay clientes con mas de una cuenta");
-					
-				}
 				
 			}
+			
+			Console.WriteLine("No hay clientes con mas de una cuenta\n");
+
+
+			
 			
 		}
 		
