@@ -33,9 +33,19 @@ namespace ProyectoBanco
 					
 				} else if(menu=="b" || menu=="B"){
 					
-					
 
-				} else if(menu=="f" || menu=="F"){
+				}else if(menu=="c" || menu=="C"){
+					
+					Opciones.OpcionC(galicia)
+					
+					
+				}else if(menu=="d" || menu=="D"){
+					
+				
+				}else if(menu=="e" || menu=="E"){
+					
+					
+				}else if(menu=="f" || menu=="F"){
 					
 					Console.WriteLine("___________Cuentas Bancarias____________");
 					
