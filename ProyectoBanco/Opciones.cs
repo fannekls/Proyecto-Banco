@@ -134,47 +134,50 @@ namespace ProyectoBanco
 					Console.Write("Ingrese el numero de la cuenta a borrar");
 					int cuentaBorrar= int.Parse(Console.ReadLine());
 					
-					banco.BajaCuenta(cuentaBorrar);
-					
 					foreach(CtaBancaria cuentaX in banco.TodasCuentas){
 						
 						if(cuentaX.NumeroCta==cuentaBorrar){
 							
 							cuentaCliente=cuentaX;
 							
-							if(cuentaCliente.DniTitular==clienteBorrar.Dni){
-								
-								foreach(Cliente clienteX in banco.TodoslosClientes){
-									
-									if(clienteX.Dni==clienteBorrar.Dni){
-										
-										clienteBorrar=clienteX;
-										
-									}
-								}
-								
-								
-								
-							}
+						}
+					}
+					
+					foreach(Cliente clienteX in banco.TodoslosClientes){
+						
+						if(clienteX.Dni==cuentaCliente.DniTitular){
+							
+							clienteBorrar=clienteX;
 							
 						}
 						
 					}
 					
-					if(clienteBorrar.CuentasCliente.Count==0){
+					if(clienteBorrar.CuentasCliente.Count==1){
 						
-						banco.TodoslosClientes.Remove(clienteBorrar);
+						banco.BajaCuenta(cuentaBorrar);
+						banco.EliminarCliente(clienteBorrar.Dni);
 						
 						
 					}
+					
+					if(clienteBorrar.CuentasCliente.Count>1){
+						
+						banco.BajaCuenta(cuentaBorrar);
+						
+					}
+					
 					
 					else{
-							
-							throw new CuentaExistenteExcepcion();
-						}
+						
+						throw new CuentaExistenteExcepcion();
+					}
+					
+					datos=false;
 					
 					
-					datos=true;
+				
+					
 					
 				} catch(FormatException){
 					

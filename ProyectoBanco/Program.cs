@@ -12,6 +12,12 @@ namespace ProyectoBanco
 			
 			DatosDefault(galicia);
 			
+			Cliente pruebaCliente;
+			
+			pruebaCliente=galicia.VerCliente(33651281);
+			
+			Console.WriteLine(pruebaCliente.CuentasCliente.Count);
+			
 			Console.WriteLine("_____________________________________________________________________________________________________________\n");
 			
 			bool menuOpciones=true;

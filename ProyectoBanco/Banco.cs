@@ -69,7 +69,7 @@ namespace ProyectoBanco
 			}
 		}
 		
-		public int CantidadClientes (int totalClientes){
+		public int CantidadClientes (){
 			
 			
 			return clientes.Count;
