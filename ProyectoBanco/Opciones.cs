@@ -28,11 +28,15 @@ namespace ProyectoBanco
 						
 						dniTitular= int.Parse(Console.ReadLine());
 						
-						if(dniTitular.ToString().ToCharArray().Length != 8){
+						if(dniTitular.ToString().ToCharArray().Length!=7){
 							
-							throw new DniException();
+							if(dniTitular.ToString().ToCharArray().Length!=8){
+								
+								throw new DniException();
+							}
+							
 						}
-						
+
 						dniInvalido=false;
 						
 						
@@ -44,11 +48,21 @@ namespace ProyectoBanco
 
 					} catch(DniException){
 						
-						Console.WriteLine("Debe ingresar 8 digitos. \n" +
+						Console.WriteLine("Debe ingresar 7 digitos u 8 digitos. \n" +
+						                  
 						                  "-------------------------------");
-					} catch(Exception){
 						
-						Console.WriteLine("INTERNAL ERROR");
+						
+					} catch(OverflowException){
+						
+					
+						Console.WriteLine("ERROR. El dni ingresado es demasiado largo");
+						
+						
+					} catch (Exception) {
+						
+						Console.WriteLine("Ha ocurrido un error inesperado");
+						
 					}
 				}
 				
@@ -294,7 +308,7 @@ namespace ProyectoBanco
 			
 			foreach(CtaBancaria cuentaX in banco.TodasCuentas){
 				
-				Console.WriteLine(cuentaX.ToString());
+				Console.WriteLine(cuentaX);
 			}
 			
 			
@@ -305,7 +319,7 @@ namespace ProyectoBanco
 			
 			foreach(Cliente clienteX in banco.TodoslosClientes){
 				
-				Console.WriteLine(clienteX.ToString());
+				Console.WriteLine(clienteX);
 				
 			}
 			

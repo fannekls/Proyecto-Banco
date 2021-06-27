@@ -63,11 +63,17 @@ namespace ProyectoBanco
 			
 			foreach(CtaBancaria cuentaX in cuentasCliente){
 				
-				listaCuentas=listaCuentas + cuentaX.ToString();
+				listaCuentas=listaCuentas + cuentaX;
 			}
 
-			return string.Format("[Cliente Nombre={0}, Apellido={1}, Email={2}, Direccion={3}, Dni={4}, Telefono={5}, CuentasBancarias={6}]", nombre, apellido, email, direccion, dni, telefono, listaCuentas);
+			return string.Format("Nombre={0}\n" +
+			                     "Apellido={1}\n" +
+			                     "Email={2}\n" +
+			                     "Direccion={3}\n" +
+			                     "Dni={4}\n" +
+			                     "Telefono={5}\n" +
+			                     "CuentasBancarias={6}" +
+			                     "\n", nombre, apellido, email, direccion, dni, telefono, listaCuentas);
 		}
-
 	}
 }

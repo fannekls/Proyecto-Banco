@@ -154,7 +154,7 @@ namespace ProyectoBanco
 				
 				Console.WriteLine("Ya existe una cuenta con numero");
 				
-				throw new CuentaExistenteExcepcion();
+				
 			}
 		}
 		
