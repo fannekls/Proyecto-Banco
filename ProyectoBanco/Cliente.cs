@@ -10,7 +10,7 @@ namespace ProyectoBanco
 		
 		private string nombre, apellido, email, direccion;
 		private int dni, telefono;
-		private ArrayList cuentasCliente;
+		//private ArrayList cuentasCliente;
 		
 		
 		//Constructores
@@ -24,7 +24,7 @@ namespace ProyectoBanco
 			this.direccion=direccion;
 			this.telefono=telefono;
 			this.email=email;
-			this.cuentasCliente= new ArrayList ();
+			//this.cuentasCliente= new ArrayList ();
 		}
 		
 		//Getters y setters
@@ -52,6 +52,8 @@ namespace ProyectoBanco
 			get{return email;}
 			set{email=value;}
 		}
+		
+		/**
 		public ArrayList CuentasCliente {
 			
 			get{return cuentasCliente;}
@@ -67,8 +69,9 @@ namespace ProyectoBanco
 			
 			cuentasCliente.Add(cta);
 			
-		}
+		}*/
 		
+		/**
 		public override string ToString(){
 
 			return string.Format("Nombre: {0}\n" +
@@ -79,6 +82,17 @@ namespace ProyectoBanco
 			                     "Telefono: {5}\n" +
 			                     "Cuentas: {6}" +
 			                     "\n", nombre, apellido, email, direccion, dni, telefono, cuentasCliente.Count);
+		}*/
+		
+		public override string ToString(){
+
+			return string.Format("Nombre: {0}\n" +
+			                     "Apellido: {1}\n" +
+			                     "Email: {2}\n" +
+			                     "Direccion: {3}\n" +
+			                     "Dni: {4}\n" +
+			                     "Telefono: {5}\n" +
+			                     "\n", nombre, apellido, email, direccion, dni, telefono);
 		}
 	}
 }

@@ -147,7 +147,6 @@ namespace ProyectoBanco
 				
 			}
 			
-			
 			while(datos){
 				try{
 					
@@ -159,7 +158,7 @@ namespace ProyectoBanco
 					
 					if(banco.esCliente(dniCliente)){
 						
-						ArrayList cuentasTitular = banco.VerCliente(dniCliente).CuentasCliente;
+						ArrayList cuentasTitular = banco.CuentasByDNICliente(dniCliente);//banco.VerCliente(dniCliente); //.CuentasCliente;
 						
 						foreach(CtaBancaria cuentaX in cuentasTitular){
 							
@@ -171,39 +170,17 @@ namespace ProyectoBanco
 							
 							Console.Write("Ingrese numero de cuenta a borrar: ");
 							int cuentaEliminar = int.Parse(Console.ReadLine());
-							
-							foreach(Cliente clientex in banco.TodoslosClientes){
-								
-								if(clientex.Dni==dniCliente){
-									
-									cuentaelim=clientex;
-									
-								}
-								
-							}
-							
-							foreach(CtaBancaria ctax in banco.TodasCuentas){
-								
-								if(ctax.NumeroCta==cuentaEliminar){
-									
-									borrarCta=ctax;
-									
-								}
-								
-							}
-							
+
 							banco.BajaCuenta(cuentaEliminar);
 							
 							banco.EliminarCliente(dniCliente);
 							
-							cuentaelim.EliminarCuenta(borrarCta);
+							//cuentaelim.EliminarCuenta(borrarCta);
 							
 							Console.WriteLine("Cuenta y cliente eliminados");
 							
 							datos=false;
-						}
-						
-						else {
+						}else {
 							
 							Console.Write("Ingrese numero de cuenta a borrar: ");
 							
@@ -238,11 +215,11 @@ namespace ProyectoBanco
 			
 			foreach(Cliente clienteX in banco.TodoslosClientes){
 				
-				if(clienteX.CuentasCliente.Count>1){
+				//if(clienteX.Count>1){
 					
 					Console.WriteLine(clienteX.ToString());
 					
-				}
+				//}
 				
 				
 			}
@@ -252,8 +229,7 @@ namespace ProyectoBanco
 
 			
 			
-		}
-		
+		}		
 		public static void OpcionD (Banco banco){
 			
 			bool datos = true;

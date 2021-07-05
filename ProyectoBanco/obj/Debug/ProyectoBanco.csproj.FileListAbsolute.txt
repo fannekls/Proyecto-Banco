@@ -3,3 +3,9 @@ C:\Users\Marcio\Documents\SharpDevelop Projects\ProyectoBanco\ProyectoBanco\bin\
 C:\Users\Marcio\Documents\SharpDevelop Projects\ProyectoBanco\ProyectoBanco\bin\Debug\ProyectoBanco.pdb
 C:\Users\Marcio\Documents\SharpDevelop Projects\ProyectoBanco\ProyectoBanco\obj\Debug\ProyectoBanco.exe
 C:\Users\Marcio\Documents\SharpDevelop Projects\ProyectoBanco\ProyectoBanco\obj\Debug\ProyectoBanco.pdb
+C:\Users\serleo\Documents\Proyects\c#\Proyecto-Banco\ProyectoBanco\obj\Debug\ProyectoBanco.exe
+C:\Users\serleo\Documents\Proyects\c#\Proyecto-Banco\ProyectoBanco\obj\Debug\ProyectoBanco.pdb
+C:\Users\serleo\Documents\Proyects\c#\Proyecto-Banco\ProyectoBanco\bin\Debug\ProyectoBanco.exe
+C:\Users\serleo\Documents\Proyects\c#\Proyecto-Banco\ProyectoBanco\bin\Debug\ProyectoBanco.pdb
+C:\Users\serleo\Documents\Proyects\c#\Proyecto-Banco\ProyectoBanco\obj\Debug\ProyectoBanco.csproj.AssemblyReference.cache
+C:\Users\serleo\Documents\Proyects\c#\Proyecto-Banco\ProyectoBanco\obj\Debug\ProyectoBanco.csproj.CoreCompileInputs.cache
