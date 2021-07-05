@@ -57,23 +57,28 @@ namespace ProyectoBanco
 			get{return cuentasCliente;}
 		}
 		
+		public void EliminarCuenta(CtaBancaria cta){
+			
+			cuentasCliente.Remove(cta);
+			
+		}
+		
+		public void AgregarCuenta (CtaBancaria cta){
+			
+			cuentasCliente.Add(cta);
+			
+		}
+		
 		public override string ToString(){
-			
-			string listaCuentas = "";
-			
-			foreach(CtaBancaria cuentaX in cuentasCliente){
-				
-				listaCuentas=listaCuentas + cuentaX;
-			}
 
-			return string.Format("Nombre={0}\n" +
-			                     "Apellido={1}\n" +
-			                     "Email={2}\n" +
-			                     "Direccion={3}\n" +
-			                     "Dni={4}\n" +
-			                     "Telefono={5}\n" +
-			                     "CuentasBancarias={6}" +
-			                     "\n", nombre, apellido, email, direccion, dni, telefono, listaCuentas);
+			return string.Format("Nombre: {0}\n" +
+			                     "Apellido: {1}\n" +
+			                     "Email: {2}\n" +
+			                     "Direccion: {3}\n" +
+			                     "Dni: {4}\n" +
+			                     "Telefono: {5}\n" +
+			                     "Cuentas: {6}" +
+			                     "\n", nombre, apellido, email, direccion, dni, telefono, cuentasCliente.Count);
 		}
 	}
 }

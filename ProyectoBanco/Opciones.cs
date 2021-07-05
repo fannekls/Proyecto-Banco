@@ -1,4 +1,4 @@
-﻿
+﻿using System.Collections;
 using System;
 
 namespace ProyectoBanco
@@ -55,7 +55,7 @@ namespace ProyectoBanco
 						
 					} catch(OverflowException){
 						
-					
+						
 						Console.WriteLine("ERROR. El dni ingresado es demasiado largo");
 						
 						
@@ -70,7 +70,7 @@ namespace ProyectoBanco
 				if(!banco.esCliente(dniTitular)){
 					
 					
-					Console.Write("Nuevo cliente, ingrese el nombre: ");
+					Console.Write("\nNuevo cliente\n ingrese el nombre: ");
 					string nombreNuevo= Console.ReadLine();
 					
 					Console.Write("Ingrese apellido: ");
@@ -105,13 +105,12 @@ namespace ProyectoBanco
 					Console.WriteLine("Ingrese numero de cuenta: ");
 					int numeroCuenta = int.Parse(Console.ReadLine());
 					
-					Console.WriteLine("Ingrese apellido: ");
-					string apellidoNuevo = Console.ReadLine();
-					
 					Console.Write("Ingrese monto inicial: ");
 					double montoInicial= double.Parse(Console.ReadLine());
 					
-					banco.AltaCuenta(numeroCuenta,apellidoNuevo,dniTitular,montoInicial);
+					string apellidoTitular = banco.VerCliente(dniTitular).Apellido;
+					
+					banco.AltaCuenta(numeroCuenta,apellidoTitular,dniTitular,montoInicial);
 					
 					
 					Console.WriteLine("Cuenta bancaria creada exitosamente");
@@ -136,61 +135,90 @@ namespace ProyectoBanco
 		
 		public static void OpcionB(Banco banco){
 			
-			Cliente clienteBorrar= null;
-			
-			CtaBancaria cuentaCliente= null;
-			
 			bool datos=true;
+			
+			Cliente cuentaelim = null;
+			
+			CtaBancaria borrarCta = null;
+			
+			foreach(Cliente clientex in banco.TodoslosClientes){
+				
+				Console.WriteLine(clientex);
+				
+			}
+			
 			
 			while(datos){
 				try{
 					
-					Console.Write("Ingrese el numero de la cuenta a borrar");
-					int cuentaBorrar= int.Parse(Console.ReadLine());
+					Console.Write("Ingrese el dni del cliente: ");
 					
-					foreach(CtaBancaria cuentaX in banco.TodasCuentas){
-						
-						if(cuentaX.NumeroCta==cuentaBorrar){
-							
-							cuentaCliente=cuentaX;
-							
-						}
-					}
+					int dniCliente= int.Parse(Console.ReadLine());
 					
-					foreach(Cliente clienteX in banco.TodoslosClientes){
+					Console.Clear();
+					
+					if(banco.esCliente(dniCliente)){
 						
-						if(clienteX.Dni==cuentaCliente.DniTitular){
+						ArrayList cuentasTitular = banco.VerCliente(dniCliente).CuentasCliente;
+						
+						foreach(CtaBancaria cuentaX in cuentasTitular){
 							
-							clienteBorrar=clienteX;
+							Console.WriteLine(cuentaX.ToString());
 							
 						}
 						
+						if(cuentasTitular.Count==1){
+							
+							Console.Write("Ingrese numero de cuenta a borrar: ");
+							int cuentaEliminar = int.Parse(Console.ReadLine());
+							
+							foreach(Cliente clientex in banco.TodoslosClientes){
+								
+								if(clientex.Dni==dniCliente){
+									
+									cuentaelim=clientex;
+									
+								}
+								
+							}
+							
+							foreach(CtaBancaria ctax in banco.TodasCuentas){
+								
+								if(ctax.NumeroCta==cuentaEliminar){
+									
+									borrarCta=ctax;
+									
+								}
+								
+							}
+							
+							banco.BajaCuenta(cuentaEliminar);
+							
+							banco.EliminarCliente(dniCliente);
+							
+							cuentaelim.EliminarCuenta(borrarCta);
+							
+							Console.WriteLine("Cuenta y cliente eliminados");
+							
+							datos=false;
+						}
+						
+						else {
+							
+							Console.Write("Ingrese numero de cuenta a borrar: ");
+							
+							int cuentaEliminar = int.Parse(Console.ReadLine());
+							
+							
+							banco.BajaCuenta(cuentaEliminar);
+							
+							Console.WriteLine("Cuenta eliminada");
+							
+							datos=false;
+							
+						}
+						
 					}
-					
-					if(clienteBorrar.CuentasCliente.Count==1){
-						
-						banco.BajaCuenta(cuentaBorrar);
-						banco.EliminarCliente(clienteBorrar.Dni);
-						
-						
-					}
-					
-					if(clienteBorrar.CuentasCliente.Count>1){
-						
-						banco.BajaCuenta(cuentaBorrar);
-						
-					}
-					
-					
-					else{
-						
-						throw new CuentaExistenteExcepcion();
-					}
-					
-					datos=false;
-					
-					
-				
 					
 					
 				} catch(FormatException){
@@ -230,36 +258,45 @@ namespace ProyectoBanco
 			
 			bool datos = true;
 			
-			while(datos){
+			foreach (CtaBancaria ctaX in banco.TodasCuentas){
 				
-				try{
-					Console.Write("Ingrese el numero de cuenta: ");
-					int cta= int.Parse(Console.ReadLine());
-					
-					Console.Write("Ingrese el monto que desea extraer: ");
-					double montoExt= double.Parse(Console.ReadLine());
-					
-					banco.Extraer(cta,montoExt);
-					
-					datos=false;
-					
-				} catch (FormatException) {
-					
-					Console.WriteLine("Solo se permiten datos numericos");
-					
-				} catch (CuentaExistenteExcepcion) {
-					
-					Console.WriteLine("Esta cuenta no se encuentra registrada");
-				} catch (SaldoInsuficienteException) {
-					
-					Console.WriteLine("Saldo Insuficiente");
-				} catch (Exception) {
-					
-					Console.WriteLine("INTERNAL ERROR. Ocurrio un error inesperado");
-				}
-				
+				Console.WriteLine(ctaX.ToString());
 			}
 			
+			while(datos){
+
+					try{
+						Console.Write("Ingrese el numero de cuenta: ");
+						int cta= int.Parse(Console.ReadLine());
+						
+						Console.Write("Ingrese el monto que desea extraer: ");
+						double montoExt= double.Parse(Console.ReadLine());
+						
+						banco.Extraer(cta,montoExt);
+						
+						Console.WriteLine("\n¡Extraccion realizada con exito!");
+						
+						datos=false;
+
+						
+					} catch (FormatException) {
+						
+						Console.WriteLine("Solo se permiten datos numericos");
+						
+					} catch (CuentaExistenteExcepcion) {
+						
+						Console.WriteLine("Esta cuenta no se encuentra registrada");
+						
+					} catch (SaldoInsuficienteException) {
+						
+						Console.WriteLine("\nSaldo Insuficiente\n");
+						
+					} catch (Exception) {
+						
+						Console.WriteLine("INTERNAL ERROR. Ocurrio un error inesperado");
+					}
+				 
+			}
 		}
 		
 		

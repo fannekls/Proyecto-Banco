@@ -60,7 +60,14 @@ namespace ProyectoBanco
 				
 				if (clienteX.Dni==dniCliente) {
 					
+					
 					clientes.Remove(clienteX);
+					
+					Console.WriteLine("Cliente eliminado con exito");
+					break;
+					
+					
+					
 				}
 				
 				else {
@@ -114,11 +121,6 @@ namespace ProyectoBanco
 			
 		}
 		
-		public void AgregarcuentasCliente (int dni){
-			
-			
-		}
-		
 		
 		//METODOS GESTION DE CUENTAS BANCARIAS
 		
@@ -127,7 +129,6 @@ namespace ProyectoBanco
 			
 			foreach(CtaBancaria cuentaX in cuentasBancarias){
 				
-				Console.WriteLine(cuentaX.ToString());
 				
 				if(cuentaX.NumeroCta==numeroCuenta){
 					
@@ -147,6 +148,8 @@ namespace ProyectoBanco
 				
 				CtaBancaria nuevaCuenta= new CtaBancaria(numeroCuenta,apellido,dniTitular,saldo);
 				cuentasBancarias.Add(nuevaCuenta);
+				VerCliente(dniTitular).AgregarCuenta(nuevaCuenta);
+				
 			}
 			
 			else {
@@ -160,17 +163,6 @@ namespace ProyectoBanco
 		
 		public void BajaCuenta(int nroCuenta){
 			
-//			foreach(CtaBancaria cuentaX in cuentasBancarias){
-//				
-//				if(cuentaX.NumeroCta==nroCuenta){
-//					
-//					cuentasBancarias.Remove(cuentaX);
-//				}
-//				else {
-//					
-//					Console.WriteLine("Cuenta inexistente");
-//				}
-//			}
 			CtaBancaria cuentaBorrar = null;
 			
 			
@@ -260,7 +252,7 @@ namespace ProyectoBanco
 			
 			else{
 				
-				cuentadeExtraccion.Saldo = cuentadeExtraccion.Saldo - monto;
+				cuentadeExtraccion.Saldo -= monto;
 			}
 			
 			
